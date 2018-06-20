@@ -1,29 +1,31 @@
 package com.lab2;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class Tar {
 
-    public static void main(final String[] args) {
+    public static void main(final String[] args) throws IOException {
         if (args[0].equals("-u")) {
-            String inputFileName = args[1];
-            //Split here -->:
+            final String inputFileName = args[1];
+            FileSplitUtil.split(inputFileName);
         } else {
-            final List<String> inputMultipleFiles = new ArrayList<>();
+            final List<String> inputFileNameList = new ArrayList<>();
             int i = 0;
             while ((i < args.length) && !args[i].equals("-out")) {
-                inputMultipleFiles.add(args[i]);
+                inputFileNameList.add(args[i]);
                 i++;
             }
             if (i == args.length) {
                 throw new IllegalArgumentException("Некорректная команда. Повторите попытку");
             } else {
-                i++;
-                if (i > args.length) {
+                if (i >= args.length - 1) {
                     throw new IllegalArgumentException("Некорректная команда. Повторите попытку");
                 }
-                //Merge here -->:
+                //Get last output file name arg:
+                final String outputFileName = args[++i];
+                FileMergeUtil.merge(inputFileNameList, outputFileName);
             }
         }
     }

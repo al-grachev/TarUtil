@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 final class FileSplitUtil {
 
+    private FileSplitUtil(){}
+
     static void split(final String inputFileName) throws IOException {
         final BufferedReader bufferedReader = new BufferedReader(new FileReader(inputFileName));
         final List<String> strings = bufferedReader.lines().collect(Collectors.toList());
@@ -22,6 +24,7 @@ final class FileSplitUtil {
                     bufferedWriter.write(string);
                     bufferedWriter.newLine();
                 }
+                bufferedWriter.close();
             }
         }
     }
