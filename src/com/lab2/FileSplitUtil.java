@@ -4,12 +4,13 @@ import java.io.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-final class FileSplitUtil {
+//Done!
+public final class FileSplitUtil {
 
     private FileSplitUtil() {
     }
 
-    static void split(final String inputFileName) throws IOException {
+    public static void split(final String inputFileName) throws IOException {
         final BufferedReader bufferedReader = new BufferedReader(new FileReader(inputFileName));
         final List<String> strings = bufferedReader.lines().collect(Collectors.toList());
         BufferedWriter bufferedWriter;
