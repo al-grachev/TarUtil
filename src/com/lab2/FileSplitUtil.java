@@ -23,7 +23,7 @@ public final class FileSplitUtil {
                 bufferedWriter = new BufferedWriter(new FileWriter(outputFile));
                 while (i < strings.size()) {
                     string = strings.get(++i);
-                    if (string.equals("<-")){
+                    if (string.equals("<-")) {
                         break;
                     }
                     bufferedWriter.write(string);

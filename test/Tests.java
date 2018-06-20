@@ -12,6 +12,12 @@ import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertTrue;
 
+/**
+ * @author Алексей
+ * <p>
+ * Здесь хранятся JUnit тесты.
+ */
+
 public final class Tests {
 
     @Test
