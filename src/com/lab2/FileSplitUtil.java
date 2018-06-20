@@ -6,21 +6,25 @@ import java.util.stream.Collectors;
 
 final class FileSplitUtil {
 
-    private FileSplitUtil(){}
+    private FileSplitUtil() {
+    }
 
     static void split(final String inputFileName) throws IOException {
         final BufferedReader bufferedReader = new BufferedReader(new FileReader(inputFileName));
         final List<String> strings = bufferedReader.lines().collect(Collectors.toList());
         BufferedWriter bufferedWriter;
-        for (int i = 0; i < strings.size(); i++){
+        for (int i = 0; i < strings.size(); i++) {
             String string = strings.get(i);
-            if (string.endsWith(".txt->")){
+            if (string.endsWith(".txt->")) {
                 //Without "->"
                 final String path = string.substring(0, string.length() - 2);
                 final File outputFile = new File(path);
                 bufferedWriter = new BufferedWriter(new FileWriter(outputFile));
-                while (i < strings.size() && !string.equals("<-")){
+                while (i < strings.size()) {
                     string = strings.get(++i);
+                    if (string.equals("<-")){
+                        break;
+                    }
                     bufferedWriter.write(string);
                     bufferedWriter.newLine();
                 }
